@@ -11,12 +11,5 @@ JUMP_SPEED = 4*SCALE_FACTOR_HEIGHT;
 GRAVITY = .7;
 VERSION = 1.2;
 
-// Show every x generations
-let showGenerationNum = 50;
-
-// Train x generations before showing initially
-let generations = 50;
-
-let mode = 0;
-let popSize = 100;
-let timeImpact = 0.9;
+let rewardLevel = 1;
+let punishment = -5;

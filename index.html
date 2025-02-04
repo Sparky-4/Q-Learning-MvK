@@ -26,14 +26,11 @@
 
 <!--js scripts for all states-->
 <script src="src/states/PlayState.js"></script>
+<script src="src/states/StartState.js"></script>
 
-<!-- NEAT implementation scripts -->
-<script src="src/population.js"></script>
-<script src="src/player.js"></script>
-<script src="src/node.js"></script>
-<script src="src/connection.js"></script>
-<script src="src/genome.js"></script>
-<script src="https://d3js.org/d3.v2.min.js?2.9.3"></script>
+<!-- Q-Learning implementation scripts -->
+<script src="src/Agent.js"></script>
+
 
 <script>
 
@@ -166,8 +163,9 @@
     // Create state machine and initialize states
     gStateMachine = new StateMachine({
         play: new PlayState(),
+        start: new StartState(),
     });
-    gStateMachine.change('play');
+    gStateMachine.change('start');
 
     function start(){
         update();
