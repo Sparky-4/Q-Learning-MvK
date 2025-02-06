@@ -11,5 +11,6 @@ JUMP_SPEED = 4*SCALE_FACTOR_HEIGHT;
 GRAVITY = .7;
 VERSION = 1.2;
 
-let rewardLevel = 1;
-let punishment = -5;
+let rewardLevel = 100;
+let punishment = 0;
+

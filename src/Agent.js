@@ -90,7 +90,7 @@ class Agent {
             this.position.y = VIRTUAL_HEIGHT-96 - this.height;
             this.velocity.y = 0;
             if (input == 1 && this.health > 0){
-                this.velocity.y = -20;
+                // this.velocity.y = -20;
             }
         }
         this.position.y += this.velocity.y;
@@ -175,7 +175,7 @@ class Agent {
     }
 
     getState(other){
-        return Math.floor((this.position.x - other.position.x + VIRTUAL_WIDTH)/10);
+        return Math.floor((this.position.x - other.position.x + VIRTUAL_WIDTH)/10)+(this.facing?Math.floor((VIRTUAL_WIDTH*2)/10):0);
     }
 
     update(other, input) {

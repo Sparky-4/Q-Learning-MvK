@@ -1,7 +1,7 @@
-learningRate = 0.3;
-discountFactor = 0.5;
-explorationRate = 0.2;
-numStates = Math.floor((VIRTUAL_WIDTH*2)/10);
+learningRate = 0.2;
+discountFactor = 0.9;
+explorationRate = 0.3;
+numStates = Math.floor((VIRTUAL_WIDTH*2)/10)*2;
 actions = [0, 1, 2, 3, 4];
 Qvals = Array.from({ length: numStates }, () => new Array(actions.length).fill(0));
 
@@ -11,14 +11,14 @@ class PlayState{
     }
 
     enter(params){
-      this.mack = new Agent(0);
-      this.kenji = new Trainer(1);
+      this.reset();
       this.train();
     }
 
     reset(){
       this.mack = new Agent(0);
       this.kenji = new Trainer(1);
+      // this.kenji = new Sprite(1);
     }
 
     train(){
@@ -53,6 +53,11 @@ class PlayState{
         if(valsToCheck[i] > valsToCheck[maxIndex])
           maxIndex = i;
       }
+      // if(keys[81]){
+      //   console.log(this.mack.getState(this.kenji))
+      //   console.log(valsToCheck)
+      //   console.log(maxIndex)
+      // }
       return maxIndex;
     }
 
@@ -70,11 +75,14 @@ class PlayState{
     * updates the state
     */
     update(){
+      // console.log(this.mack.getState(this.kenji))
+      // console.log(this.getBestAction())
       this.handleInputs();
       if(this.terminalCheck()){
         this.reset();
       }
       this.step();
+      
     }
 
     handleInputs(){

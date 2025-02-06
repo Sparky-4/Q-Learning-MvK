@@ -82,9 +82,6 @@ class Sprite {
             this.forwardHitbox.isAttacking = false;
             this.forwardHitbox.recovery = 0;
             this.curAnimation = this.animations.death;
-            let death = document.createElement("AUDIO");
-            death.src = this.sounds.death.src;
-            death.play();
         }
     }
 
@@ -95,9 +92,6 @@ class Sprite {
             this.position.y = VIRTUAL_HEIGHT-96 - this.height;
             this.velocity.y = 0;
             if (keys[this.moveKeys.up] && this.health > 0){
-                let jump = document.createElement("AUDIO");
-                jump.src = this.sounds.jump.src;
-                jump.play();
                 this.velocity.y = -20;
             }
         }
@@ -129,33 +123,12 @@ class Sprite {
     handleDamage(other){
         if(other.forwardHitbox.isAttacking && this.collides(other.forwardHitbox)){
             this.health = Math.max(0, this.health-other.forwardHitbox.damage);
-            if(this.health > 0){
-                let hurt = document.createElement("AUDIO");
-                hurt.src = this.sounds.hurt.src;
-                hurt.play();
-                let hit = document.createElement("AUDIO");
-                hit.src = gSounds.hit.src;
-                hit.volume = .3;
-                hit.play();
-            }
             this.hitstun = other.forwardHitbox.hitstun;
             this.resetAnimations(10, other.forwardHitbox.hitstun);
             if(this.forwardHitbox.startup > 0){
-                let toPlay = document.createElement("AUDIO");
-                if(Math.random() < .1)
-                    toPlay.src = gSounds.cucumber.src;
-                else
-                    toPlay.src = gSounds.counter.src;
-                toPlay.play();
                 this.display.message = 'COUNTER!';
                 this.display.frames = 40;
             }else if (this.forwardHitbox.recovery > 0){
-                let toPlay = document.createElement("AUDIO");
-                if(Math.random() < .2)
-                    toPlay.src = gSounds.peanut.src;
-                else
-                    toPlay.src = gSounds.punish.src;
-                toPlay.play();
                 this.display.message = 'PUNISH!';
                 this.display.frames = 40;
             }
@@ -206,12 +179,6 @@ class Sprite {
         
         if(keys[this.moveKeys.attack] && this.forwardHitbox.startup == 0 && this.forwardHitbox.recovery == 0 && this.hitstun == 0){
             this.forwardHitbox.startup = 15;
-            let sword = document.createElement("AUDIO");
-            sword.src = gSounds.sword.src;
-            sword.volume = .5;
-            sword.play();
-            if(randInt(0, 2000) == 0)
-                gSounds.song.play();
             this.resetAnimations(30, 10);
         }
         if (this.forwardHitbox.startup == 1){
