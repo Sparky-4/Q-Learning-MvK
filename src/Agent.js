@@ -89,8 +89,8 @@ class Agent {
         if (this.position.y + this.height + this.velocity.y > VIRTUAL_HEIGHT-96) {
             this.position.y = VIRTUAL_HEIGHT-96 - this.height;
             this.velocity.y = 0;
-            if (input == 1 && this.health > 0){
-                // this.velocity.y = -20;
+            if (input == 1 && this.health > 0 && canJump){
+                this.velocity.y = -20;
             }
         }
         this.position.y += this.velocity.y;

@@ -92,7 +92,7 @@ class Trainer {
         if (this.position.y + this.height + this.velocity.y > VIRTUAL_HEIGHT-96) {
             this.position.y = VIRTUAL_HEIGHT-96 - this.height;
             this.velocity.y = 0;
-            if (Math.random() < .01 && this.health > 0){
+            if (Math.random() < .01 && this.health > 0 && canJump){
                 this.velocity.y = -20;
             }
         }

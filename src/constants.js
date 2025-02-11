@@ -11,6 +11,7 @@ JUMP_SPEED = 4*SCALE_FACTOR_HEIGHT;
 GRAVITY = .7;
 VERSION = 1.2;
 
+let iterations = 15000;
 let rewardLevel = 100;
 let punishment = 0;
-
+let canJump = false;

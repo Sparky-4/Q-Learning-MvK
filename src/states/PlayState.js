@@ -3,7 +3,7 @@ discountFactor = 0.9;
 explorationRate = 0.3;
 numStates = Math.floor((VIRTUAL_WIDTH*2)/10)*2;
 actions = [0, 1, 2, 3, 4];
-Qvals = Array.from({ length: numStates }, () => new Array(actions.length).fill(0));
+// Qvals = Array.from({ length: numStates }, () => new Array(actions.length).fill(0));
 
 class PlayState{
 
@@ -22,7 +22,7 @@ class PlayState{
     }
 
     train(){
-      for(let i = 0; i < 10000; i++){
+      for(let i = 0; i < iterations; i++){
         this.reset();
         while(!this.terminalCheck()) {
           this.step();
